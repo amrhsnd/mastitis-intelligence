@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mastitis Intelligence</title>
+    <meta name="description" content="Scientific dairy mastitis KPI dashboard and monthly reporting prototype.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2320242a'/%3E%3Cpath d='M18 42V18h7l7 13 7-13h7v24h-7V30l-6 11h-2l-6-11v12z' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application controls">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">MI</div>
+          <div>
+            <strong>Mastitis Intelligence</strong>
+            <span data-i18n="brandTagline">Udder health command center</span>
+          </div>
+        </div>
+
+        <nav class="tabs" aria-label="Dashboard sections">
+          <button class="tab-button is-active" data-tab="overview" type="button" data-i18n="tabOverview">Overview</button>
+          <button class="tab-button" data-tab="cows" type="button" data-i18n="tabCows">Cow Risk</button>
+          <button class="tab-button" data-tab="report" type="button" data-i18n="tabReport">Report</button>
+          <button class="tab-button" data-tab="methodology" type="button" data-i18n="tabMethodology">Methodology</button>
+        </nav>
+
+        <section class="control-group" aria-labelledby="settings-title">
+          <h2 id="settings-title" data-i18n="settings">Settings</h2>
+          <label>
+            <span data-i18n="language">Language</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="fa">فارسی</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="herdSize">Lactating cows</span>
+            <input id="herdSizeInput" type="number" min="1" step="1">
+          </label>
+          <label>
+            <span data-i18n="sccCutoff">SCC cutoff</span>
+            <input id="sccCutoffInput" type="number" min="50000" step="10000">
+          </label>
+          <label>
+            <span data-i18n="coverageThreshold">Coverage threshold</span>
+            <input id="coverageInput" type="range" min="50" max="100" step="5">
+            <output id="coverageOutput"></output>
+          </label>
+          <label>
+            <span data-i18n="milkPrice">Milk price</span>
+            <input id="milkPriceInput" type="number" min="0" step="1000">
+          </label>
+        </section>
+
+        <section class="control-group" aria-labelledby="data-title">
+          <h2 id="data-title" data-i18n="data">Data</h2>
+          <div class="button-grid">
+            <button id="sampleButton" class="action-button" type="button" data-icon="refresh">
+              <span data-i18n="loadSample">Sample</span>
+            </button>
+            <button id="exportButton" class="action-button" type="button" data-icon="download">
+              <span data-i18n="export">Export</span>
+            </button>
+            <label class="action-button file-button" data-icon="upload">
+              <span data-i18n="import">Import</span>
+              <input id="importInput" type="file" accept="application/json">
+            </label>
+            <button id="printButton" class="action-button" type="button" data-icon="printer">
+              <span data-i18n="printPdf">PDF</span>
+            </button>
+            <a class="action-button" href="pilot-readiness-fa.html" lang="fa" dir="rtl">
+              گزارش فارسی
+            </a>
+          </div>
+          <p class="helper-text" data-i18n="localOnly">Data stays in this browser unless you export it.</p>
+        </section>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="freshnessLabel">Demo data</p>
+            <h1 data-i18n="pageTitle">Mastitis control analytics</h1>
+            <p class="lede" data-i18n="pageLede">A rule-based scientific dashboard for SCC, clinical mastitis, dry period risk, milk quality, pathogen signals, and NMC seven-point execution.</p>
+          </div>
+          <div class="score-panel" aria-label="Overall herd score">
+            <div class="score-ring" id="scoreRing">
+              <span id="overallScore">--</span>
+            </div>
+            <div>
+              <strong data-i18n="overallScore">Overall score</strong>
+              <span id="scoreStatus">--</span>
+            </div>
+          </div>
+        </header>
+
+        <section id="overview" class="tab-panel is-active" aria-labelledby="overview-title">
+          <div class="summary-band">
+            <div>
+              <h2 id="overview-title" data-i18n="summaryTitle">Current herd signal</h2>
+              <p id="summaryText"></p>
+            </div>
+            <div id="coverageBadge" class="status-badge">--</div>
+          </div>
+
+          <section class="kpi-grid" id="kpiGrid" aria-label="Key performance indicators"></section>
+
+          <section class="dashboard-grid">
+            <div class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <h2 data-i18n="trendTitle">BTSCC and new infection trend</h2>
+                  <p id="trendCaption"></p>
+                </div>
+              </div>
+              <div id="trendChart" class="chart-area" role="img" aria-label="Trend chart"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2 data-i18n="alertTitle">Priority alerts</h2>
+                  <p data-i18n="alertCaption">Rules map KPI patterns to NMC action points.</p>
+                </div>
+              </div>
+              <div id="alertsList" class="alerts-list"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2 data-i18n="pathogenTitle">Pathogen signal</h2>
+                  <p data-i18n="pathogenCaption">Bulk culture patterns grouped by epidemiologic class.</p>
+                </div>
+              </div>
+              <div id="pathogenChart" class="chart-area compact" role="img" aria-label="Pathogen bar chart"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2 data-i18n="nmcTitle">NMC seven-point execution</h2>
+                  <p data-i18n="nmcCaption">Manual implementation score combined with KPI performance.</p>
+                </div>
+              </div>
+              <div id="nmcScores" class="nmc-list"></div>
+            </div>
+          </section>
+        </section>
+
+        <section id="cows" class="tab-panel" aria-labelledby="cows-title">
+          <div class="section-header">
+            <div>
+              <h2 id="cows-title" data-i18n="watchlistTitle">Cow risk watchlist</h2>
+              <p data-i18n="watchlistCaption">Persistent high SCC, high SCS, and production deviation are ranked for action.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="cowId">Cow</th>
+                  <th>SCC</th>
+                  <th>SCS</th>
+                  <th data-i18n="status">Status</th>
+                  <th data-i18n="milkLoss">Milk deviation</th>
+                  <th data-i18n="recommendedAction">Action</th>
+                </tr>
+              </thead>
+              <tbody id="watchlistTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="report" class="tab-panel printable-report" aria-labelledby="report-title">
+          <div class="section-header">
+            <div>
+              <h2 id="report-title" data-i18n="reportTitle">Monthly veterinary report</h2>
+              <p id="reportSubtitle"></p>
+            </div>
+            <button id="printReportButton" class="primary-button" type="button" data-icon="printer">
+              <span data-i18n="printPdf">PDF</span>
+            </button>
+          </div>
+          <div id="reportBody"></div>
+        </section>
+
+        <section id="methodology" class="tab-panel" aria-labelledby="method-title">
+          <div class="section-header">
+            <div>
+              <h2 id="method-title" data-i18n="methodTitle">Scientific method and schema</h2>
+              <p data-i18n="methodCaption">Thresholds are configurable because local regulations, climate, herd size, breed, and lab practices matter.</p>
+            </div>
+          </div>
+          <div id="methodologyBody" class="methodology"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="iconTemplate"></template>
+    <script src="src/kpi-engine.js"></script>
+    <script src="src/sample-data.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

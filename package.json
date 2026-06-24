@@ -1,0 +1,18 @@
+{
+  "name": "mastitis-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scientific mastitis KPI dashboard prototype for dairy herd monitoring.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/kpi-engine.js && node --check src/sample-data.js && node --check src/app.js"
+  },
+  "keywords": [
+    "mastitis",
+    "dairy",
+    "somatic-cell-count",
+    "dashboard",
+    "veterinary"
+  ],
+  "license": "UNLICENSED"
+}

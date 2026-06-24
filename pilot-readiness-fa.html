@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>گزارش آماده سازی پایلوت Mastitis Intelligence</title>
+    <meta name="description" content="گزارش فارسی آماده سازی پایلوت برای نرم افزار Mastitis Intelligence.">
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --surface: #ffffff;
+        --ink: #20242a;
+        --muted: #68707b;
+        --line: #d9dee5;
+        --blue: #2563eb;
+        --teal: #0f766e;
+        --amber: #b45309;
+        --red: #b91c1c;
+        color-scheme: light;
+        font-family: Vazirmatn, IRANSans, Tahoma, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.9;
+      }
+
+      main {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      header,
+      section {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 16px;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.45;
+        margin: 0 0 12px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      ul,
+      ol {
+        padding-inline-start: 24px;
+        margin: 0;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      a {
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .eyebrow {
+        color: var(--teal);
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: #fbfcfd;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.55rem;
+        color: var(--ink);
+      }
+
+      .metric span {
+        color: var(--muted);
+      }
+
+      .callout {
+        border-inline-start: 4px solid var(--amber);
+        background: #fff8ed;
+      }
+
+      .decision {
+        border-inline-start: 4px solid var(--teal);
+      }
+
+      .risk {
+        border-inline-start: 4px solid var(--red);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .button.primary {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          width: min(100% - 20px, 980px);
+          padding-top: 16px;
+        }
+
+        header,
+        section {
+          padding: 18px;
+        }
+
+        .summary {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">گزارش فارسی برای اشتراک</p>
+        <h1>آماده سازی پایلوت Mastitis Intelligence</h1>
+        <p>این گزارش برای توضیح وضعیت فعلی نرم افزار ورم پستان به یک همکار، دامپزشک، مدیر دامداری یا سرمایه گذار اولیه آماده شده است.</p>
+        <div class="actions">
+          <a class="button primary" href="index.html">باز کردن اپلیکیشن</a>
+          <a class="button" href="docs/pilot-readiness-fa.md">نسخه Markdown</a>
+        </div>
+        <div class="summary" aria-label="خلاصه وضعیت">
+          <div class="metric">
+            <strong>پایلوت</strong>
+            <span>برای پایلوت کنترل شده مناسب است</span>
+          </div>
+          <div class="metric">
+            <strong>۱۰ KPI</strong>
+            <span>در خروجی نمونه تولید شد</span>
+          </div>
+          <div class="metric">
+            <strong>۶/۶</strong>
+            <span>تست های فعلی پاس شدند</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="decision">
+        <h2>جمع بندی اجرایی</h2>
+        <p><strong>نتیجه اصلی:</strong> نسخه فعلی Mastitis Intelligence برای یک «مرحله آماده سازی پایلوت کنترل شده» مناسب است، اما هنوز برای استفاده تجاری/بالینی واقعی روی تصمیم های درمانی یا مدیریتی گله آماده نیست.</p>
+        <p>این نرم افزار یک نمونه اولیه جدی و قابل نمایش است: هسته محاسباتی واقعی دارد، شاخص های اصلی ورم پستان را محاسبه می کند، رابط انگلیسی/فارسی و راست چین دارد، داده نمونه و ورود/خروج JSON را پشتیبانی می کند، گزارش قابل چاپ دارد، و آزمون های خودکار فعلی با موفقیت اجرا شده اند.</p>
+        <p>قبل از استفاده با داده واقعی دامداری باید اعتبارسنجی علمی، قالب های ورود داده، کنترل کیفیت داده، تایید دامپزشک، مدیریت هشدارها، امنیت، ذخیره سازی پایدار، سطح دسترسی کاربران و لاگ قابل ممیزی تکمیل شود.</p>
+      </section>
+
+      <section>
+        <h2>نرم افزار الان چه کار می کند؟</h2>
+        <ul>
+          <li>میانگین هندسی SCC بالک تانک، شیوع عفونت زیربالینی، نرخ عفونت جدید و نرخ عفونت مزمن را محاسبه می کند.</li>
+          <li>SCS، موارد بالینی، درمان/عود، شاخص های دوره خشکی، باکتریولوژی بالک، کیفیت شیر و زیان اقتصادی را نمایش می دهد.</li>
+          <li>برنامه هفت نقطه ای NMC را با امتیاز دستی و KPIهای خودکار ترکیب می کند.</li>
+          <li>هشدارهای اولویت دار و فهرست گاوهای پرریسک را برای تصمیم مدیریتی تولید می کند.</li>
+          <li>رابط فارسی/انگلیسی، راست چین، چاپ PDF، و ورود/خروج دستی داده دارد.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>چرا برای پایلوت مناسب است؟</h2>
+        <p>این نسخه برای پایلوت مناسب است چون منطق اصلی شاخص ها در کد پیاده سازی شده و فقط یک تصویر نمایشی نیست. در تست محلی، نرم افزار ۱۰ KPI، چندین هشدار، فهرست گاوهای پرریسک و امتیاز کلی گله را از داده نمونه تولید کرد.</p>
+        <p>رابط کاربری نیز برای محیط ایران در نظر گرفته شده است: فارسی، راست چین، قیمت شیر قابل تنظیم، آستانه SCC قابل تنظیم، و امکان ورود/خروج دستی داده وجود دارد. این برای شروع کار بدون انبار داده یا اتصال آزمایشگاه قابل قبول است.</p>
+      </section>
+
+      <section class="risk">
+        <h2>چرا هنوز برای استفاده واقعی کامل نیست؟</h2>
+        <p>مهم ترین ریسک، ظاهر داشبورد نیست؛ ریسک اصلی اعتماد علمی و عملیاتی به نتایج روی داده واقعی است. تست های فعلی محدود هستند و باید با سناریوهای ثابت و قابل بازبینی از طرف دامپزشک کامل شوند.</p>
+        <p>همچنین در خروجی نمونه، هشدار پاتوژن Staphylococcus aureus برای مثبت های تکراری چند بار ظاهر شد. بنابراین لایه هشدار باید قبل از پایلوت واقعی deduplicate و اولویت بندی شود تا کاربر با هشدارهای تکراری گیج نشود.</p>
+      </section>
+
+      <section>
+        <h2>اولویت های پیشنهادی قبل از داده واقعی</h2>
+        <ol>
+          <li><strong>بسته اعتبارسنجی علمی بسازید:</strong> حداقل ۲۰ سناریوی ثابت برای SCC، NIR، مزمن، بالینی، درمان، دوره خشکی، کشت، اقتصاد، داده ناقص و موارد مرزی.</li>
+          <li><strong>قالب ورود داده دستی طراحی شود:</strong> CSV/Excel/JSON استاندارد، نسخه بندی schema، پیام خطای ردیفی، بررسی پوشش داده و تشخیص رکورد تکراری.</li>
+          <li><strong>بازبینی دامپزشکی انجام شود:</strong> آستانه ها، متن تفسیرها، پیشنهاد اقدام ها و محدودیت های درمانی باید تایید شوند.</li>
+          <li><strong>هشدارها سخت گیرانه تر شوند:</strong> هشدارهای تکراری حذف، شدت ها مرتب، و برای ترکیب شاخص ها تست نوشته شود.</li>
+          <li><strong>زیرساخت تجاری اضافه شود:</strong> حساب کاربری، پایگاه داده، نقش و سطح دسترسی، تاریخچه واردات، لاگ تغییرات، پشتیبان گیری و امنیت.</li>
+          <li><strong>پایلوت ۲ تا ۳ دامداری طراحی شود:</strong> داده تاریخی، رضایت استفاده از داده، شاخص های موفقیت، جلسه بازبینی و معیار stop/go.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>جایگاه تجاری پیشنهادی</h2>
+        <p>در فاز اول بهتر است محصول به عنوان «دستیار تحلیل و گزارش دهی ورم پستان برای دامپزشک و مدیر دامداری» معرفی شود، نه ابزار تشخیص قطعی یا تصمیم گیر درمانی خودکار.</p>
+        <ul>
+          <li>جلسه ماهانه دامپزشک با گزارش عددی و قابل دفاع</li>
+          <li>تشخیص سریع روندهای بدترشونده SCC و عفونت جدید</li>
+          <li>فهرست گاوهای مزمن و پرریسک برای تصمیم مدیریتی</li>
+          <li>برآورد زیان اقتصادی برای توجیه سرمایه گذاری در کنترل ورم پستان</li>
+          <li>کمک به کاهش مصرف غیرهدفمند آنتی بیوتیک با تاکید بر کشت و پروتکل دامپزشکی</li>
+        </ul>
+      </section>
+
+      <section class="callout">
+        <h2>حکم پیشنهادی</h2>
+        <p><strong>ادامه بدهید، اما مرحله بعد را «پایلوت کنترل شده و اعتبارسنجی» تعریف کنید، نه «عرضه تجاری کامل».</strong></p>
+        <p>این ابزار فقط پشتیبان تصمیم است. تشخیص، درمان و تغییر پروتکل دارویی باید توسط دامپزشک مجاز و بر اساس داده معتبر آزمایشگاهی انجام شود.</p>
+      </section>
+
+      <section>
+        <h2>منابع اصلی</h2>
+        <ul>
+          <li><a href="https://www.nmconline.org/wp-content/uploads/2025/08/SEVEN-point-NMC-Recommended-Mastitis-Control-08.18.25.pdf">National Mastitis Council, Recommended Mastitis Control Program, 2025</a></li>
+          <li><a href="https://www.nmconline.org/wp-content/uploads/2023/06/Guidelines-on-Normal-and-Abnormal-Raw-Milk-Formatted-002.pdf">NMC Guidelines on Normal and Abnormal Raw Milk</a></li>
+          <li><a href="https://www.nmconline.org/wp-content/uploads/2023/06/IN-PROGRESS-Fact-Sheet-The-Value-and-Use-of-Dairy-Herd-Improvement-Somatic-Cell-Count-Formatted.pdf">NMC DHI Somatic Cell Count Fact Sheet</a></li>
+        </ul>
+        <p class="muted">منابع Journal of Dairy Science ذکرشده در متن اولیه پروژه باید در مرحله بازبینی علمی به صورت دقیق و موردی audit شوند.</p>
+      </section>
+    </main>
+  </body>
+</html>
